@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{fragments/layout :: head}"></th:block>
+    <title>LABOCER | Productos</title>
+    <link rel="shortcut icon" th:href="@{/img-nos/logo.png}" type="image/x-icon">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+
+    <!-- Estilos EXCLUSIVOS de esta página. No modifica css/custom.css -->
+    <style>
+        .catalogo-hero {
+            background: linear-gradient(135deg, rgba(58,26,89,.96), rgba(107,75,142,.92));
+            color: #fff;
+            padding: 48px 0 42px;
+            position: relative;
+            overflow: hidden;
+        }
+        .catalogo-hero::after {
+            content: "";
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background: rgba(255,193,7,.13);
+            right: -80px;
+            top: -80px;
+        }
+        .catalogo-title { font-weight: 700; letter-spacing: .2px; }
+        .catalogo-subtitle { color: rgba(255,255,255,.82); max-width: 680px; }
+        .buscador-catalogo {
+            background: #fff;
+            border: 0;
+            border-radius: 999px;
+            padding: 13px 18px;
+            box-shadow: 0 8px 24px rgba(0,0,0,.14);
+        }
+        .buscador-catalogo .form-control,
+        .buscador-catalogo .form-control:focus { border: 0; box-shadow: none; }
+
+        .catalogo-wrap { padding: 36px 0 56px; }
+        .filtros-card {
+            background: #fff;
+            border: 1px solid #e0e6ed;
+            border-radius: 20px;
+            box-shadow: 0 8px 22px rgba(0,0,0,.07);
+            position: sticky;
+            top: 92px;
+        }
+        .filtros-titulo { color: var(--labocer-purple-dark); font-weight: 700; }
+        .filtro-seccion + .filtro-seccion { border-top: 1px solid #edf0f4; margin-top: 18px; padding-top: 18px; }
+        .filtro-seccion h6 { color: var(--labocer-purple); font-weight: 700; margin-bottom: 10px; }
+        .filtro-opcion { margin-bottom: 7px; }
+        .filtro-opcion .form-check-input { border-color: #aeb7c3; }
+        .filtro-opcion .form-check-input:checked {
+            background-color: var(--labocer-purple);
+            border-color: var(--labocer-purple);
+        }
+        .filtro-opcion .form-check-label { cursor: pointer; color: #4a5260; }
+        .btn-limpiar-filtro {
+            border: 1px solid var(--labocer-purple);
+            color: var(--labocer-purple);
+            font-weight: 700;
+        }
+        .btn-limpiar-filtro:hover { background: var(--labocer-purple); color: #fff; }
+
+        .resultado-top {
+            background: rgba(255,255,255,.84);
+            border: 1px solid rgba(224,230,237,.9);
+            border-radius: 14px;
+            padding: 12px 16px;
+        }
+        .badge-filtro { background: #f1eafb; color: var(--labocer-purple-dark); border: 1px solid #e4d6f2; }
+
+        .producto-card {
+            border: 0;
+            border-radius: 18px;
+            overflow: hidden;
+            height: 100%;
+            background: #fff;
+            box-shadow: 0 6px 18px rgba(45,49,66,.09);
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+        .producto-card:hover { transform: translateY(-5px); box-shadow: 0 13px 28px rgba(107,75,142,.17); }
+        .producto-img-wrap {
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: #fff;
+            border-bottom: 1px solid #f0f1f3;
+        }
+        .producto-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+        }
+        .producto-marca { background: var(--labocer-purple); }
+        .producto-nombre { color: #2d3142; min-height: 48px; }
+        .producto-categoria { color: #7a8190; }
+        .producto-color-dot {
+            width: 12px; height: 12px; border-radius: 50%; display: inline-block;
+            border: 1px solid rgba(0,0,0,.14); vertical-align: -1px;
+        }
+        .btn-detalle { margin-top: auto; }
+
+        .modal-producto .modal-content { border-radius: 22px; overflow: hidden; }
+        .modal-producto .modal-header { background: var(--labocer-purple); color: #fff; }
+        .modal-producto .modal-product-img {
+            width: 100%; max-height: 300px; object-fit: contain; background: #fff; padding: 16px;
+            border-radius: 16px; border: 1px solid #eef0f3;
+        }
+        .tabla-ficha th { width: 38%; color: var(--labocer-purple); background: #f8f5fb; }
+        .tabla-ficha td { color: #424957; }
+
+        .sin-resultados { background: rgba(255,255,255,.92); border-radius: 18px; border: 1px dashed #c9ced6; padding: 42px 24px; }
+
+        @media (max-width: 991.98px) {
+            .filtros-card { position: static; }
+            .catalogo-wrap { padding-top: 24px; }
+        }
+        @media (max-width: 575.98px) {
+            .catalogo-hero { padding: 34px 0 30px; }
+            .producto-img-wrap { height: 195px; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Encabezado Reutilizable -->
+    <div th:replace="~{fragments/layout :: topbar}"></div>
+    <div th:replace="~{fragments/layout :: navbar}"></div>
+
+    <!-- CABECERA DEL CATÁLOGO -->
+    <header class="catalogo-hero">
+        <div class="container position-relative" style="z-index:1;">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-7">
+                    <span class="badge bg-warning text-dark rounded-pill px-3 py-2 mb-3">CATÁLOGO LABOCER</span>
+                    <h1 class="display-5 catalogo-title mb-2">Nuestros productos</h1>
+                    <p class="catalogo-subtitle mb-0">Encuentra golosinas, confites, chocolates y más. Filtra por marca, categoría o color y revisa la ficha técnica de cada producto.</p>
+                </div>
+                <div class="col-lg-5">
+                    <div class="buscador-catalogo d-flex align-items-center">
+                        <i class="bi bi-search text-purple fs-5 me-2"></i>
+                        <input id="buscarProducto" class="form-control" type="search" placeholder="Buscar producto, marca o categoría..." autocomplete="off" aria-label="Buscar producto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CATÁLOGO -->
+    <main class="catalogo-wrap">
+        <div class="container">
+            <div class="row g-4 align-items-start">
+                <!-- BARRA LATERAL CON FILTROS -->
+                <aside class="col-lg-3">
+                    <div class="filtros-card p-3 p-md-4">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="filtros-titulo mb-0"><i class="bi bi-sliders2 me-2"></i>Filtrar productos</h5>
+                            <button id="btnLimpiarFiltros" class="btn btn-sm btn-limpiar-filtro rounded-pill px-3" type="button">Limpiar</button>
+                        </div>
+
+                        <div class="filtro-seccion">
+                            <h6><i class="bi bi-star-fill me-1"></i> Marca</h6>
+                            <div id="filtroMarca"></div>
+                        </div>
+
+                        <div class="filtro-seccion">
+                            <h6><i class="bi bi-grid-3x3-gap-fill me-1"></i> Categoría</h6>
+                            <div id="filtroCategoria"></div>
+                        </div>
+
+                        <div class="filtro-seccion">
+                            <h6><i class="bi bi-palette-fill me-1"></i> Color</h6>
+                            <div id="filtroColor"></div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- GRILLA -->
+                <section class="col-lg-9" aria-labelledby="tituloListado">
+                    <div class="resultado-top d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+                        <div>
+                            <h2 id="tituloListado" class="h5 text-purple fw-bold mb-1">Catálogo de productos</h2>
+                            <span id="contadorProductos" class="small text-muted"></span>
+                        </div>
+                        <div id="filtrosActivos" class="d-flex flex-wrap gap-2"></div>
+                    </div>
+
+                    <div id="grillaProductos" class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-4">
+                <div class="col" th:each="p : ${productos}">
+                    <div class="producto-card">
+                        
+                        <div class="producto-img-wrap">
+                            <img class="producto-img"
+                                th:src="@{'/' + ${p.imagen}}"
+                                th:alt="${p.nombre}">
+                        </div>
+
+                        <div class="p-3 d-flex flex-column h-100">
+                            <span class="badge producto-marca align-self-start mb-2"
+                                th:text="${p.marca}">
+                                Marca
+                            </span>
+
+                            <h3 class="h5 producto-nombre fw-bold"
+                                th:text="${p.nombre}">
+                                Nombre del producto
+                            </h3>
+
+                            <p class="producto-categoria small mb-2"
+                            th:text="${p.categoria}">
+                                Categoría
+                            </p>
+
+                            <p class="small text-muted mb-3">
+                                <span class="producto-color-dot"></span>
+                                <span th:text="${p.color}">Color</span>
+                            </p>
+
+                            <button type="button"
+                                    class="btn btn-labocer-purple rounded-pill btn-detalle"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#productModal"
+                                    th:attr="data-nombre=${p.nombre},
+                                            data-marca=${p.marca},
+                                            data-categoria=${p.categoria},
+                                            data-color=${p.color},
+                                            data-codigo=${p.codigo},
+                                            data-descripcion=${p.descripcion},
+                                            data-imagen=${p.imagen}">
+                                Ver detalle
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                                <div id="sinResultados" class="sin-resultados text-center d-none">
+                                    <i class="bi bi-search-heart text-purple display-5"></i>
+                                    <h3 class="h5 fw-bold mt-3">No encontramos productos</h3>
+                                    <p class="text-muted mb-3">Prueba con otro término o elimina alguno de los filtros.</p>
+                                    <button id="btnLimpiarSinResultados" type="button" class="btn btn-labocer-yellow rounded-pill px-4">Ver todos los productos</button>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </main>
+
+                <!-- MODAL BOOTSTRAP: FICHA TÉCNICA AMPLIADA -->
+                <div class="modal fade modal-producto" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div>
+                                    <span class="small text-warning fw-semibold">FICHA TÉCNICA</span>
+                                    <h3 class="modal-title h5 fw-bold mb-0" id="productModalLabel">Producto</h3>
+                                </div>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                            </div>
+                            <div class="modal-body p-4">
+                                <div class="row g-4 align-items-start">
+                                    <div class="col-md-5 text-center">
+                                        <img id="modalProductImage" class="modal-product-img" src="" alt="Producto seleccionado">
+                                    </div>
+                                    <div class="col-md-7">
+                                        <h4 id="modalProductName" class="fw-bold text-purple mb-2"></h4>
+                                        <p id="modalProductDescription" class="text-muted mb-4"></p>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered align-middle tabla-ficha mb-0">
+                                                <tbody>
+                                                    <tr><th>Marca</th><td id="modalBrand"></td></tr>
+                                                    <tr><th>Categoría</th><td id="modalCategory"></td></tr>
+                                                    <tr><th>Color</th><td id="modalColor"></td></tr>
+                                                    <tr><th>Código</th><td id="modalCode"></td></tr>
+                                                    <tr><th>Presentación</th><td id="modalPresentation"></td></tr>
+                                                    <tr><th>Caja master</th><td id="modalBox"></td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+    <!-- Footer -->
+    <div th:replace="~{fragments/layout :: footer}"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script th:inline="javascript">
+    const productos = /*[[${productos}]]*/ [];
+    window.productos = productos;
+</script>
+
+    <script th:src="@{/js/catalogo.js}"></script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{fragments/layout :: head}"></th:block>
+    <title>Trabaja con Nosotros - LABOCER | Importación y Distribución de Golosinas</title>
+ 
+    <link rel="shortcut icon" th:href="@{/img-nos/logo.png}" type="image/x-icon">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+   
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+    
+    <style>
+        /* Tarjeta Header */
+        .header-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border: 4px solid #ffffff;
+        }
+
+        .text-purple {
+            color: #6B4B8E !important;
+        }
+
+        .bg-purple {
+            background-color: #6B4B8E !important;
+        }
+
+        /* Tarjeta principal del formulario y lateral */
+        .card-candy {
+            border: none;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            background-color: #ffffff;
+        }
+
+        /* Botón de envío */
+        .btn-candy {
+            background-color: #ffc107;
+            color: #000000 !important;
+            font-family: 'Fredoka', cursive;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .btn-candy:hover {
+            transform: scale(1.02);
+            background-color: #e0a800;
+        }
+
+        /* Form Controls con estilo redondeado */
+        .form-control, .form-select, .input-group-text {
+            border-radius: 12px;
+        }
+        
+        .input-group .form-control {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+        
+        .input-group .input-group-text {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            background-color: #f1f0ff;
+            color: #6B4B8E;
+        }
+
+        .form-label {
+            font-family: 'Fredoka', cursive;
+            color: #6B4B8E;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado Reutilizable -->
+    <div th:replace="~{fragments/layout :: topbar}"></div>
+    <div th:replace="~{fragments/layout :: navbar}"></div>
+
+    <!-- Header / Título -->
+    <header class="container py-5">
+        <div class="header-box text-center p-4 p-md-5">
+            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-3">
+                <i class="bi bi-briefcase-fill me-1"></i> Oportunidades Laborales
+            </span>
+            <h1 class="display-5 fw-bold text-purple mb-3">¡Únete al Equipo Labocer! 💼</h1>
+            <p class="lead text-muted mx-auto mb-0" style="max-width: 750px;">
+                Buscamos talentos apasionados que deseen crecer junto a nosotros en la distribución de las mejores marcas de dulce en todo el Perú.
+            </p>
+        </div>
+    </header>
+
+    <main class="container mb-5">
+        
+        <!-- Componente de Retroalimentación (Alert) -->
+        <div class="alert alert-warning alert-dismissible fade show card-candy p-3 mb-4 d-flex align-items-center gap-2 border-0" role="alert">
+            <i class="bi bi-stars text-purple fs-4"></i>
+            <div>
+                <strong>¡Proceso de Selección Activo!</strong> Revisa que todos tus datos estén correctos antes de enviar tu solicitud.
+            </div>
+            <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div class="row g-4">
+            
+            <!-- Formulario Principal -->
+            <div class="col-lg-8">
+                <div class="card card-candy p-4 p-md-5">
+                    <h3 class="fw-bold text-purple mb-4">Formulario de Postulación</h3>
+                    
+                    <form id="formPostulacion" class="needs-validation" novalidate>
+                        
+                        <!-- Nombres y Apellidos -->
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6 form-group">
+                                <label for="nombre" class="form-label">Nombres</label>
+                                <input type="text" class="form-control" id="nombre" placeholder="Ej. Juan" required>
+                                <div class="valid-feedback">¡Correcto!</div>
+                                <div class="invalid-feedback">Por favor ingresa tu nombre.</div>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label for="apellido" class="form-label">Apellidos</label>
+                                <input type="text" class="form-control" id="apellido" placeholder="Ej. Pérez" required>
+                                <div class="valid-feedback">¡Correcto!</div>
+                                <div class="invalid-feedback">Por favor ingresa tus apellidos.</div>
+                            </div>
+                        </div>
+
+                        <!-- Correo Electrónico con Input Group -->
+                        <div class="mb-3 form-group">
+                            <label for="email" class="form-label">Correo Electrónico</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                                <input type="email" class="form-control" id="email" placeholder="ejemplo@correo.com" required>
+                                <div class="invalid-feedback">Ingresa un correo electrónico válido.</div>
+                            </div>
+                        </div>
+
+                        <!-- Teléfono / WhatsApp con Input Group (Exactamente 9 dígitos) -->
+                        <div class="mb-3 form-group">
+                            <label for="telefono" class="form-label">Teléfono / WhatsApp</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
+                                <input 
+                                    type="tel" 
+                                    class="form-control" 
+                                    id="telefono" 
+                                    placeholder="987654321" 
+                                    maxlength="9" 
+                                    minlength="9" 
+                                    pattern="[0-9]{9}" 
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '')" 
+                                    required
+                                >
+                                <div class="invalid-feedback">Debe ingresar exactamente 9 dígitos numéricos.</div>
+                            </div>
+                        </div>
+
+                        <!-- Área a la que postula -->
+                        <div class="mb-3 form-group">
+                            <label for="area" class="form-label">Área de Interés</label>
+                            <select class="form-select" id="area" required>
+                                <option value="" selected disabled>Selecciona un área...</option>
+                                <option value="ventas">Ventas y Distribución</option>
+                                <option value="almacen">Almacén y Logística</option>
+                                <option value="administracion">Administración</option>
+                                <option value="marketing">Marketing</option>
+                            </select>
+                            <div class="invalid-feedback">Selecciona un área de trabajo.</div>
+                        </div>
+
+                        <!-- Subir CV -->
+                        <div class="mb-4 form-group">
+                            <label for="cv" class="form-label">Adjuntar Curriculum Vitae (PDF o Word)</label>
+                            <input type="file" class="form-control" id="cv" accept=".pdf,.doc,.docx" required>
+                            <div class="invalid-feedback">Adjunta tu archivo de CV.</div>
+                        </div>
+
+                        <!-- Botón Submit -->
+                        <button type="submit" class="btn btn-candy w-100 py-3 mt-2">
+                            <i class="bi bi-send-fill me-2"></i>Enviar Mi Postulación
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+
+            <!-- Tarjeta Lateral de Datos de Contacto -->
+            <div class="col-lg-4">
+                <div class="card card-candy p-4 bg-purple text-white h-100 d-flex flex-column justify-content-between">
+                    <div>
+                        <h4 class="fw-bold text-warning mb-3">
+                            <i class="bi bi-building-gear me-2"></i>Oficina Central
+                        </h4>
+                        <p class="small opacity-90 mb-4">Si tienes dudas sobre las postulaciones o deseas atención presencial:</p>
+                        
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="bi bi-geo-alt-fill text-warning fs-5 me-3"></i>
+                            <div>
+                                <strong class="d-block text-warning">Dirección:</strong>
+                                <span class="small">Calle Pacto Andino 250, Chorrillos, Lima - Perú</span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="bi bi-telephone-fill text-warning fs-5 me-3"></i>
+                            <div>
+                                <strong class="d-block text-warning">Central Telefónica:</strong>
+                                <span class="small">(01) 4672504 / 4672533</span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-start mb-3">
+                            <i class="bi bi-envelope-fill text-warning fs-5 me-3"></i>
+                            <div>
+                                <strong class="d-block text-warning">Correo RRHH:</strong>
+                                <span class="small">seleccionpersonal@labocer.com.pe</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-3 bg-white bg-opacity-10 rounded-4 mt-4">
+                        <strong class="d-block text-warning small"><i class="bi bi-clock-fill me-1"></i> Horarios de Atención:</strong>
+                        <span class="small">Lunes a Viernes: 8:00 AM - 5:30 PM</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div th:replace="~{fragments/layout :: footer}"></div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script de Validación Nativa de Bootstrap -->
+    <script>
+        (() => {
+            'use strict'
+            const form = document.getElementById('formPostulacion')
+
+            form.addEventListener('submit', event => {
+                const telefonoInput = document.getElementById('telefono');
+                
+                if (!form.checkValidity() || telefonoInput.value.length !== 9) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                } else {
+                    event.preventDefault()
+                    alert('¡Gracias por postular! Recibimos tus datos correctamente.');
+                    form.reset();
+                    form.classList.remove('was-validated');
+                    return;
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })()
+    </script>
+</body>
+</html>

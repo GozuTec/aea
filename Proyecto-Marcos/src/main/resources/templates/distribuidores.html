@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{fragments/layout :: head}"></th:block>
+    <title>Distribuidores - LABOCER</title>
+    <link rel="shortcut icon" th:href="@{/img-nos/logo.png}" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+    
+    <style>
+        .mapabox {
+            position: relative;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .mapaperu {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .btnpro {
+            position: absolute;
+            z-index: 10;
+        }
+
+        .btnmap {
+            background-color: #ffc107;
+            color: #2b0854;
+            font-weight: bold;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            margin: 0;
+            display: inline-block;
+            transition: all 0.2s ease-in-out;
+            user-select: none;
+            border: none;
+        }
+
+        .btnmap:hover,
+        .btnmap:focus {
+            background-color: #2b0854;
+            color: #ffffff;
+            transform: scale(1.08);
+        }
+
+        .inmapa.boxpro {
+            display: none;
+            position: absolute;
+            top: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 280px;
+            max-height: 260px;
+            overflow-y: auto;
+            background-color: #ffffff;
+            border: 2px solid #6B4B8E;
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            font-size: 0.85rem;
+            text-align: left;
+        }
+
+        .inmapa.boxpro,
+        .inmapa.boxpro p,
+        .inmapa.boxpro strong {
+            color: #000000 !important;
+        }
+
+        .inmapa.boxpro p {
+            margin-bottom: 0;
+        }
+
+        /* Soporte para Hover y Clics activos */
+        .btnpro:hover .inmapa.boxpro,
+        .btnpro.active .inmapa.boxpro {
+            display: block;
+        }
+
+        /* Posicionamiento en el Mapa */
+        .proceso1 { top: 62%; left: 30%; }
+        .proceso2 { top: 25%; left: 52%; }
+        .proceso3 { top: 76%; left: 42%; }
+        .proceso4 { top: 78%; left: 75%; }
+        .proceso5 { top: 55%; left: 40%; }
+        .proceso6 { top: 40%; left: 16%; }
+
+        /* Ajustes Responsivos */
+        @media (max-width: 576px) {
+            .btnmap {
+                padding: 4px 10px;
+                font-size: 0.75rem;
+            }
+            .inmapa.boxpro {
+                width: 220px;
+                font-size: 0.78rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado Reutilizable -->
+    <div th:replace="~{fragments/layout :: topbar}"></div>
+    <div th:replace="~{fragments/layout :: navbar}"></div>
+
+    <!-- Contenido Principal: Mapa Interactivo -->
+    <main class="container py-5">
+        <div class="text-center mb-4 p-3 bg-white bg-opacity-90 rounded shadow-sm">
+            <h1 class="fw-bold mb-1" style="color: #6B4B8E !important;">Red de Distribuidores</h1>
+        </div>
+
+        <div class="mapabox animateblock">
+            <img th:src="@{/img-distr/mapa.png}" class="mapaperu" alt="Mapa de Perú Distribuidores" onerror="this.src='/imgs/mapa.png'">
+            
+            <!-- LIMA -->
+            <div class="btnpro proceso1">
+                <button class="btnmap">Lima</button>
+                <div class="inmapa boxpro">
+                    <p>Distribuidores San Hilarion S.A.</p>
+                    <p>Distribuidores MAFE.L S.A.C.</p>
+                    <p>Drug Store San Nicolás S.A.C.</p>
+                    <p>Representaciones San Nicolás S.A.C.</p>
+                    <p>Dacom Comercial E.I.R.L.</p>
+                    <p>Distribuciones CESFA S.A.C.</p>
+                    <p>Distribuciones e inversiones Aldrians S.A.C.</p>
+                    <p>Grupo Dulmed S.A.C.</p>
+                    <p>Romero Poma Joel</p>
+                    <p>Rojas Benavides José Manuel</p>
+                    <p>SOMAD S.R.L.</p>
+                </div> 
+            </div> 
+
+            <!-- ORIENTE -->
+            <div class="btnpro proceso2">
+                <button class="btnmap">Oriente</button>
+                <div class="inmapa boxpro">
+                    <p>
+                        <strong>PUCALLPA</strong><br>
+                        - DISTRIBUCIONES B Y V DEL ORIENTE E.I.R.L.<br>
+                        - E-INNOVAS DISTRIBUIDORES E.I.R.L.<br>
+                        - INVERSIONES V Y A S.A.C.<br>
+                        - MAKRO DISTRIBUIDORES E.I.R.L.<br><br>
+                        <strong>MOYOBAMBA</strong><br>
+                        - ARAUJO CANELO, JHON HAYRO<br><br>
+                        <strong>TARAPOTO</strong><br>
+                        - ALTAMIRANO CHAVEZ, DANIEL
+                    </p>
+                </div> 
+            </div>
+
+            <!-- SUR CHICO -->
+            <div class="btnpro proceso3">
+                <button class="btnmap">Sur Chico</button>
+                <div class="inmapa boxpro">
+                    <p>
+                        <strong>ANDAHUAYLAS</strong><br>
+                        - CUYA MENDEZ, GENOVEVA<br><br>
+                        <strong>AYACUCHO</strong><br>
+                        - DISTRIBUIDORA JIMENEZ E IRIARTE S.A.<br><br>
+                        <strong>CHINCHA</strong><br>
+                        - CARBAJAL ALMEYDA, DARIO RENATO<br>
+                        - DISTRIBUIDORA JIMENEZ E IRIARTE S.A.<br><br>
+                        <strong>ICA</strong><br>
+                        - HERNANDEZ NEYRA, JOSEPH JAVIER<br>
+                        - DISTRIBUIDORA JIMENEZ E IRIARTE S.A.
+                    </p>
+                </div> 
+            </div>
+
+            <!-- SUR -->
+            <div class="btnpro proceso4">
+                <button class="btnmap">Sur</button>
+                <div class="inmapa boxpro">
+                    <p>
+                        <strong>PUERTO MALDONADO</strong><br>
+                        - CAÑAZACA APAZA, JUAN LUIS<br><br>
+                        <strong>CUSCO</strong><br>
+                        - DON JOSE REPRESENTACIONES S.R.L.<br>
+                        - INVERSIONES REMAN E.I.R.L.<br>
+                        - KONSUMASS S.C.R.L.<br>
+                        - PORTUGAL DISTRIBUCIONES E.I.R.L.<br><br>
+                        <strong>AREQUIPA</strong><br>
+                        - CHIRINOS DISTRIBUCIONES E.I.R.L.<br>
+                        - DISTRIBUIDORA VICTORIA E.I.R.L.<br>
+                        - MANRIQUE DISTRIBUCIONES E.I.R.L.<br>
+                        - MCED DISTRIBUCIONES E.I.R.L.<br>
+                        - SOLUCIONES LCD PERU S.A.C.<br><br>
+                        <strong>TACNA</strong><br>
+                        - DISTRIBUCIONES DE IMPULSO VARIEDADES DEL SUR S.R.L.<br><br>
+                        <strong>MOQUEGUA</strong><br>
+                        - SON DE ORO E.I.R.L.<br><br>
+                        <strong>JULIACA</strong><br>
+                        - APAZA CCASO, RUBEN<br>
+                        - DISTRIBUCIONES Y REPRESENTACIONES VALMIAR E.I.R.L.<br>
+                        - HORIZONTE CUSCO
+                    </p>
+                </div> 
+            </div>
+
+            <!-- CENTRO -->
+            <div class="btnpro proceso5">
+                <button class="btnmap">Centro</button>
+                <div class="inmapa boxpro">
+                    <p>
+                        <strong>OXAPAMPA</strong><br>
+                        - ACEVEDO BLANCO, CLELIA ALBINA<br><br>
+                        <strong>TINGO MARIA</strong><br>
+                        - AGB DISTRIBUCIONES E.I.R.L.<br><br>
+                        <strong>HUANUCO</strong><br>
+                        - DISART S.C.R.L.<br><br>
+                        <strong>CERRO DE PASCO</strong><br>
+                        - DISTRIBUCIONES E INVERSIONES RIVER E.I.R.L.<br>
+                        - FIDELAC S.R.L.<br><br>
+                        <strong>CHANCHAMAYO</strong><br>
+                        - CASIMIRO ALCOSER JUAN JOSE<br>
+                        - CA & LU<br><br>
+                        <strong>HUANCAVELICA</strong><br>
+                        - FERNANDEZ TORRES, WILLIAMS GEORGE<br><br>
+                        <strong>HUANCAYO</strong><br>
+                        - CORPORACION CENTRAL ZUAN S.A.C.<br>
+                        - GESA CENTRO S.A.C.<br>
+                        - REPRESENTACIONES VV & AS E.I.R.LTDA.<br>
+                        - PAYHUA ROSEL, MARCO ANTONIO<br>
+                        - BVALE<br><br>
+                        <strong>TARMA</strong><br>
+                        - DIMERZA S.R.LTDA.
+                    </p>
+                </div> 
+            </div>   
+
+            <!-- NORTE -->
+            <div class="btnpro proceso6">
+                <button class="btnmap">Norte</button>
+                <div class="inmapa boxpro">
+                    <p>
+                        <strong>PIURA</strong><br>
+                        - EUROVA S.A.C.<br>
+                        - INVERSIONES JEHOVA NISHI<br><br>
+                        <strong>TUMBES</strong><br>
+                        - INVERSIONES BEA E.I.R.L.<br>
+                        - INVERSIONES CAMILA Y JPS E.I.R.L.<br><br>
+                        <strong>CHICLAYO</strong><br>
+                        - DISTRIBUCIONES CORONEL PERALES<br>
+                        - DISTRIBUCIONES ANAYA E.I.R.L.<br>
+                        - SANTA ANITA CHICLAYO S.A.C.<br>
+                        - ACCQUISTA<br><br>
+                        <strong>TRUJILLO</strong><br>
+                        - COMERCIAL TODO BARATO<br><br>
+                        <strong>SULLANA</strong><br>
+                        - INVERSIONES JEHOVA NISHI<br>
+                        - DISTRIBUCIONES DSC S.A.C.<br><br>
+                        <strong>CHIMBOTE</strong><br>
+                        - DISTRIBUIDORA CHUICA<br>
+                        - GIL SANCHEZ ROBERTO<br><br>
+                        <strong>HUARAZ</strong><br>
+                        - DISTRIBUIDORA RODAMA<br><br>
+                        <strong>HUACHO</strong><br>
+                        - DISTRIBUIDORA PRIMOS<br><br>
+                        <strong>JAÉN</strong><br>
+                        - REPRESENTACIONES EDU<br><br>
+                        <strong>CAJAMARCA</strong><br>
+                        - DISTRIBUCIONES CHALLI S.R.L.
+                    </p>
+                </div> 
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div th:replace="~{fragments/layout :: footer}"></div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Soporte tactil para mostrar/ocultar distribuidores al pulsar en movil
+        document.querySelectorAll('.btnpro').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.stopPropagation();
+                document.querySelectorAll('.btnpro').forEach(el => {
+                    if (el !== item) el.classList.remove('active');
+                });
+                item.classList.toggle('active');
+            });
+        });
+
+        // Cerrar recuadros al tocar fuera
+        document.addEventListener('click', function() {
+            document.querySelectorAll('.btnpro').forEach(el => el.classList.remove('active'));
+        });
+    </script>
+</body>
+</html>

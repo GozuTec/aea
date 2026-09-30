@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{fragments/layout :: head}"></th:block>
+    <title>Contacto - LABOCER | Importación y Distribución de Golosinas</title>
+    <link rel="shortcut icon" th:href="@{/img-nos/logo.png}" type="image/x-icon">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+    <style>
+        /* Tarjeta Header */
+        .header-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border: 4px solid #ffffff;
+        }
+
+        .text-purple {
+            color: #6B4B8E !important;
+        }
+
+        .bg-purple {
+            background-color: #6B4B8E !important;
+        }
+
+        /* Tarjeta principal y lateral */
+        .card-candy {
+            border: none;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            background-color: #ffffff;
+            overflow: hidden;
+        }
+
+        /* Botón de envío */
+        .btn-candy {
+            background-color: #ffc107;
+            color: #000000 !important;
+            font-family: 'Fredoka', cursive;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .btn-candy:hover {
+            transform: scale(1.02);
+            background-color: #e0a800;
+        }
+
+        /* Form Controls con estilo redondeado */
+        .form-control, .form-select, .input-group-text {
+            border-radius: 12px;
+        }
+        
+        .input-group .form-control, .input-group .form-select {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+        
+        .input-group .input-group-text {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            background-color: #f1f0ff;
+            color: #6B4B8E;
+        }
+
+        .form-label {
+            font-family: 'Fredoka', cursive;
+            color: #6B4B8E;
+        }
+
+        .icon-box-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f1f0ff;
+            color: #6B4B8E;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado Reutilizable -->
+    <div th:replace="~{fragments/layout :: topbar}"></div>
+    <div th:replace="~{fragments/layout :: navbar}"></div>
+
+    <!-- Header / Título -->
+    <header class="container py-5">
+        <div class="header-box text-center p-4 p-md-5">
+            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-3">
+                <i class="bi bi-chat-dots-fill me-1"></i> Atención al Cliente
+            </span>
+            <h1 class="display-5 fw-bold text-purple mb-3">¡Ponte en Contacto! ✉️</h1>
+            <p class="lead text-muted mx-auto mb-0" style="max-width: 750px;">
+                ¿Tienes consultas sobre nuestros productos, pedidos al por mayor o alianzas comerciales? Escríbenos y responderemos a la brevedad.
+            </p>
+        </div>
+    </header>
+
+    <main class="container mb-5">
+        
+        <!-- Tarjetas de Información Rápida -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="card card-candy p-4 text-center h-100 d-flex flex-column align-items-center justify-content-center">
+                    <div class="icon-box-circle mb-3">
+                        <i class="bi bi-geo-alt-fill"></i>
+                    </div>
+                    <h5 class="fw-bold text-purple mb-2">Dirección</h5>
+                    <p class="text-muted small mb-0">Calle Pacto Andino 250<br>Chorrillos, Lima - Perú</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card card-candy p-4 text-center h-100 d-flex flex-column align-items-center justify-content-center">
+                    <div class="icon-box-circle mb-3">
+                        <i class="bi bi-telephone-fill"></i>
+                    </div>
+                    <h5 class="fw-bold text-purple mb-2">Central Telefónica</h5>
+                    <p class="text-muted small mb-0">(01) 4672504 / 4672533<br>Fax: 2665271</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card card-candy p-4 text-center h-100 d-flex flex-column align-items-center justify-content-center">
+                    <div class="icon-box-circle mb-3">
+                        <i class="bi bi-envelope-paper-fill"></i>
+                    </div>
+                    <h5 class="fw-bold text-purple mb-2">Correos Electrónicos</h5>
+                    <p class="text-muted small mb-0">contacto@labocer.com.pe<br>ventas@labocer.com.pe</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Formulario de Contacto -->
+            <div class="col-lg-7">
+                <div class="card card-candy p-4 p-md-5">
+                    <h3 class="fw-bold text-purple mb-4"><i class="bi bi-pencil-square me-2"></i>Escríbenos un Mensaje</h3>
+                    
+                   <form 
+    id="formContacto"
+    th:action="@{/contacto/enviar}"
+    method="post"
+    class="needs-validation"
+    novalidate>
+                        
+                        <!-- Nombre Completo -->
+                        <div class="mb-3 form-group">
+                            <label for="nombreCompleto" class="form-label">Nombre Completo</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                                <input 
+    type="text"
+    class="form-control"
+    id="nombreCompleto"
+    name="nombreCompleto"
+    placeholder="Ej. María García"
+    required>
+                                <div class="invalid-feedback">Por favor ingresa tu nombre completo.</div>
+                            </div>
+                        </div>
+
+                        <!-- Correo Electrónico -->
+                        <div class="mb-3 form-group">
+                            <label for="emailContacto" class="form-label">Correo Electrónico</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                                <input 
+    type="email"
+    class="form-control"
+    id="emailContacto"
+    name="email"
+    placeholder="ejemplo@correo.com"
+    required>
+                                <div class="invalid-feedback">Ingresa un correo electrónico válido.</div>
+                            </div>
+                        </div>
+
+                        <!-- Teléfono / WhatsApp -->
+                        <div class="mb-3 form-group">
+                            <label for="telefonoContacto" class="form-label">Teléfono / Celular</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-whatsapp"></i></span>
+                                <input 
+    type="tel"
+    class="form-control"
+    id="telefonoContacto"
+    name="telefono"
+    placeholder="987654321"
+    maxlength="9"
+    minlength="9"
+    pattern="[0-9]{9}"
+    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+    required>
+                                <div class="invalid-feedback">Ingresa un número telefónico de 9 dígitos.</div>
+                            </div>
+                        </div>
+
+                        <!-- Motivo de Consulta -->
+                        <div class="mb-3 form-group">
+                            <label for="asunto" class="form-label">Motivo de Consulta</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-question-circle-fill"></i></span>
+                                <select class="form-select" id="asunto" name="asunto" required>
+                                    <option value="" selected disabled>Selecciona una opción...</option>
+                                    <option value="pedidos">Ventas y Pedidos al por Mayor</option>
+                                    <option value="distribucion">Quiero ser Distribuidor</option>
+                                    <option value="atencion">Atención al Cliente / Reclamos</option>
+                                    <option value="otro">Otro Motivo</option>
+                                </select>
+                                <div class="invalid-feedback">Selecciona el motivo de tu consulta.</div>
+                            </div>
+                        </div>
+
+                        <!-- Mensaje -->
+                        <div class="mb-4 form-group">
+                            <label for="mensaje" class="form-label">Mensaje</label>
+                           <textarea 
+    class="form-control"
+    id="mensaje"
+    name="mensaje"
+    rows="4"
+    placeholder="Escribe aquí tu consulta o comentario..."
+    required></textarea>
+                            <div class="invalid-feedback">Por favor escribe un mensaje.</div>
+                        </div>
+
+                        <!-- Botón Submit -->
+                        <button type="submit" class="btn btn-candy w-100 py-3">
+                            <i class="bi bi-send-fill me-2"></i>Enviar Consulta
+                        </button>
+
+                    </form>
+                    <div 
+    th:if="${mensaje}"
+    class="alert alert-success mt-4"
+    role="alert">
+
+    <i class="bi bi-check-circle-fill me-2"></i>
+    Mensaje recibido correctamente.
+</div>
+                </div>
+            </div>
+
+            <!-- Mapa de Ubicación -->
+            <div class="col-lg-5">
+                <div class="card card-candy h-100 p-2">
+                    <div class="p-3">
+                        <h4 class="fw-bold text-purple mb-1"><i class="bi bi-map-fill me-2"></i>Nuestra Ubicación</h4>
+                        <p class="text-muted small mb-0">Visítanos en nuestras instalaciones principales en Chorrillos.</p>
+                    </div>
+                    <div class="flex-grow-1" style="min-height: 350px;">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.270921471379!2d-77.0135320251786!3d-12.16115984339174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b81014a0fa81%3A0xb001ba0236a287ee!2sCa.%20Pacto%20Andino%20250%2C%20Chorrillos%2015056!5e0!3m2!1ses!2spe!4v1700000000000!5m2!1ses!2spe" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0; border-radius: 20px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div th:replace="~{fragments/layout :: footer}"></div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script de Validación Nativa de Bootstrap -->
+ <script>
+(() => {
+    'use strict'
+
+    const form = document.getElementById('formContacto')
+
+    form.addEventListener('submit', event => {
+
+        const telefonoInput = document.getElementById('telefonoContacto');
+
+        if (!form.checkValidity() || telefonoInput.value.length !== 9) {
+            event.preventDefault()
+            event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+
+    }, false)
+
+})()
+</script>
+</body>
+</html>

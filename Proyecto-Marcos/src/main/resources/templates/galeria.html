@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{fragments/layout :: head}"></th:block>
+    <title>LABOCER | Galería de Fotos</title>
+
+    <style>
+        .gallery-img {
+            max-width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+            border-radius: 12px;
+            margin: 0 auto;
+            display: block;
+            border: 4px solid #6B4B8E;
+        }
+
+        #galleryTabs .nav-link {
+            background-color: #6B4B8E;
+            color: #ffffff;
+            border: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        #galleryTabs .nav-link:hover {
+            color: #ffc107;
+            background-color: #553873;
+        }
+
+        #galleryTabs .nav-link.active {
+            background-color: #fd7e14 !important;
+            color: #ffffff !important;
+            border: none;
+        }
+
+        .carousel {
+            position: relative;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 8%;
+            z-index: 10;
+            opacity: 0.85;
+            transition: opacity 0.3s ease;
+        }
+
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            opacity: 1;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: #6B4B8E;
+            border-radius: 50%;
+            padding: 22px;
+            background-size: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-item {
+            background-color: transparent !important;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .carousel-item::before {
+            display: none !important;
+            content: none !important;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- Encabezado Reutilizable -->
+    <div th:replace="~{fragments/layout :: topbar}"></div>
+    <div th:replace="~{fragments/layout :: navbar}"></div>
+
+    <!-- Sección de Galería -->
+    <main class="container my-5 flex-grow-1" id="seccionscrol">
+        <div class="text-center mb-4 bg-white p-4 rounded-3 shadow-sm">
+            <h2 class="fw-bold text-uppercase mb-2" style="color: #6B4B8E;">Nuestra Galería</h2>
+            <p class="text-muted mb-0">Conoce nuestras instalaciones, eventos y participación con clientes.</p>
+        </div>
+
+        <!-- Pestañas de Navegación -->
+        <ul class="nav nav-tabs justify-content-center mb-4" id="galleryTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active px-4" id="clientes-tab" data-bs-toggle="tab" data-bs-target="#clientes" type="button" role="tab">Clientes</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link px-4" id="labocer-tab" data-bs-toggle="tab" data-bs-target="#labocer" type="button" role="tab">Labocer</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link px-4" id="prueba-tab" data-bs-toggle="tab" data-bs-target="#prueba" type="button" role="tab">Prueba</button>
+            </li>
+        </ul>
+
+        <!-- Contenido de las Pestañas -->
+        <div class="tab-content" id="galleryTabsContent">
+            <!-- Pestaña Clientes -->
+            <div class="tab-pane fade show active" id="clientes" role="tabpanel">
+                <div id="carouselClientes" class="carousel slide shadow-sm" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img th:src="@{/img-gal/cliente1.jpg}" class="gallery-img" alt="Galería Cliente 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img th:src="@{/img-gal/cliente2.jpg}" class="gallery-img" alt="Galería Cliente 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img th:src="@{/img-gal/cliente3.jpg}" class="gallery-img" alt="Galería Cliente 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img th:src="@{/img-gal/cliente7.jpg}" class="gallery-img" alt="Galería Cliente 4">
+                        </div>
+                        <div class="carousel-item">
+                            <img th:src="@{/img-gal/cliente5.jpg}" class="gallery-img" alt="Galería Cliente 5">
+                        </div>
+                        <div class="carousel-item">
+                            <img th:src="@{/img-gal/cliente6.jpg}" class="gallery-img" alt="Galería Cliente 6">
+                        </div>
+                        <div class="carousel-item">
+                            <img th:src="@{/img-gal/cliente8.jpg}" class="gallery-img" alt="Galería Cliente 7">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselClientes" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselClientes" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Siguiente</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pestaña Labocer -->
+            <div class="tab-pane fade" id="labocer" role="tabpanel">
+                <div id="carouselLabocer" class="carousel slide shadow-sm" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img th:src="@{/img-gal/Vendedores1.jpg}" class="gallery-img" alt="Equipo Labocer 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img th:src="@{/img-gal/Vendedores2.jpg}" class="gallery-img" alt="Equipo Labocer 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img th:src="@{/img-gal/Vendedores3.jpg}" class="gallery-img" alt="Equipo Labocer 3">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselLabocer" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselLabocer" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Siguiente</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pestaña Prueba -->
+            <div class="tab-pane fade" id="prueba" role="tabpanel">
+                <div id="carouselPrueba" class="carousel slide shadow-sm" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img th:src="@{/img-gal/prueba.jpg}" class="gallery-img" alt="Prueba 1">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselPrueba" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselPrueba" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Siguiente</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Unificado -->
+    <div th:replace="~{fragments/layout :: footer}"></div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

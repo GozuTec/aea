@@ -1,0 +1,269 @@
+/* ==================================================
+   VARIABLES Y COLORES UNIFICADOS
+   ================================================== */
+:root {
+  --labocer-purple-top: #553873;
+  --labocer-purple: #6B4B8E;
+  --labocer-purple-dark: #3a1a59;
+  --labocer-yellow: #ffc107;
+  --labocer-yellow-hover: #e0a800;
+  --labocer-magenta: #be115a;
+  --labocer-blue-bg: #cee8ee;
+  --labocer-text: #2D3142;
+  --labocer-border: #E0E6ED;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+/* ==================================================
+   TIPOGRAFIAS Y FONDO CORPORATIVO
+   ================================================== */
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--labocer-text);
+  background-color: var(--labocer-blue-bg) !important;
+  background-image: url('../img/backgrounds/background.jpg') !important;
+  background-repeat: repeat-y !important;
+  background-position: top center !important;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+h1, h2, h3, h4, h5, .brand-logo-text, .brand-font {
+  font-family: 'Fredoka', cursive, sans-serif;
+}
+
+section {
+  background-color: transparent !important;
+}
+
+/* ==================================================
+   TOPBAR Y NAVBAR CORPORATIVOS
+   ================================================== */
+.topbar-bg {
+  background-color: var(--labocer-purple-top) !important;
+  color: #ffffff !important;
+}
+
+.nav-labocer {
+  background-color: var(--labocer-purple) !important;
+}
+
+.nav-labocer .nav-link {
+  color: #ffffff !important;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border-radius: 20px;
+  padding: 8px 16px !important;
+}
+
+.nav-labocer .nav-link:hover,
+.nav-labocer .nav-link.active {
+  color: var(--labocer-yellow) !important;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.text-purple {
+  color: var(--labocer-purple) !important;
+}
+
+/* ==================================================
+   BOTONES CORPORATIVOS
+   ================================================== */
+.btn-candy {
+  background-color: var(--labocer-yellow);
+  color: #000000 !important;
+  font-family: 'Fredoka', cursive, sans-serif;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 25px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.btn-candy:hover {
+  transform: scale(1.05);
+  background-color: var(--labocer-yellow-hover);
+}
+
+.btn-labocer-yellow {
+  background-color: var(--labocer-yellow);
+  color: #000000;
+  font-weight: 700;
+  border: none;
+  border-radius: 25px;
+  padding: 8px 20px;
+  transition: all 0.2s ease;
+}
+
+.btn-labocer-yellow:hover {
+  background-color: var(--labocer-yellow-hover);
+  color: #000000;
+}
+
+/* ==================================================
+   CARRUSEL: OVERLAY OSCURO Y TEXTO MORADO
+   ================================================== */
+.carousel-item {
+  position: relative;
+}
+
+.carousel-item::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(18, 5, 28, 0.45);
+  z-index: 1;
+}
+
+.carousel-caption-morado {
+  position: absolute;
+  z-index: 2;
+  bottom: 2.5rem;
+  left: 10%;
+  right: 10%;
+  background: rgba(85, 56, 115, 0.92);
+  border-radius: 16px;
+  padding: 20px 25px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* ==================================================
+   PILARES CORPORATIVOS
+   ================================================== */
+.card-pilar {
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 35px 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-pilar:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(107, 75, 142, 0.15);
+}
+
+/* ==================================================
+   PRODUCTOS: TARJETAS Y GRID
+   ================================================== */
+.card-custom {
+  border: 1px solid var(--labocer-border);
+  border-radius: 16px;
+  background-color: #ffffff !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-custom:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(107, 75, 142, 0.15);
+}
+
+.card-custom .card-img-top {
+  height: 180px !important;
+  width: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border-radius: 16px 16px 0 0;
+}
+
+.nav-pills .nav-link {
+  border-radius: 20px;
+  padding: 8px 24px;
+  font-weight: 600;
+}
+
+.nav-pills .nav-link.active {
+  background-color: var(--labocer-purple) !important;
+  color: #ffffff !important;
+}
+
+/* ==================================================
+   MARCAS REPRESENTADAS
+   ================================================== */
+.brand-card-item {
+  background-color: #ffffff;
+  border-radius: 14px;
+  padding: 12px 16px;
+  min-height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.brand-card-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(107, 75, 142, 0.15);
+}
+
+.brand-img {
+  max-height: 44px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* ==================================================
+   FOOTER Y MODAL
+   ================================================== */
+.footer-bg {
+  background-color: var(--labocer-purple) !important;
+  color: #ffffff !important;
+}
+
+.footer-bg p, .footer-bg span, .footer-bg div {
+  color: #ffffff !important;
+}
+
+.modal-content {
+  border-radius: 25px;
+  border: none;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* ==================================================
+   CORRECCION GLOBAL: ELIMINAR FOCO AZUL DE BOOTSTRAP
+   ================================================== */
+*:focus,
+.btn:focus,
+.btn:active:focus,
+.form-control:focus,
+.form-select:focus,
+.accordion-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: var(--labocer-purple) !important;
+}
+
+/* En inputs y selects, mantener el foco sutil con el morado de la marca */
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--labocer-purple) !important;
+  box-shadow: 0 0 0 0.2rem rgba(107, 75, 142, 0.2) !important;
+}
+
+/* En botones tipo candy o amarillos, foco sutil en amarillo */
+.btn-candy:focus,
+.btn-labocer-yellow:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.4) !important;
+}
+
+/* En acordeones, eliminar completamente el fondo y contorno azul nativo */
+.accordion-button:focus {
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: var(--labocer-purple) !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}

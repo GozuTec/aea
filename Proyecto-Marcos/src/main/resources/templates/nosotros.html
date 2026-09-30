@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{fragments/layout :: head}"></th:block>
+    <title>Nosotros - LABOCER</title>
+</head>
+<body>
+    <!-- Fragmentos del maquetador (Integrante 1) -->
+    <div th:replace="~{fragments/layout :: topbar}"></div>
+    <div th:replace="~{fragments/layout :: navbar}"></div>
+
+    <header class="container py-5">
+        <div class="header-box text-center p-4 p-md-5">
+            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-3">
+                <i class="bi bi-globe-americas me-1"></i> Importación & Distribución Nacional
+            </span>
+            <h1 class="display-5 fw-bold text-purple mb-3">¡Llevamos Alegría a Todo el Perú! 🍭</h1>
+            <p class="lead text-muted mx-auto mb-0" style="max-width: 750px;">
+                Conoce la historia y visión de LABOCER. Seleccionamos los mejores chocolates, caramelos y confites del mundo para compartirlos con millones de familias peruanas.
+            </p>
+        </div>
+    </header>
+
+    <main class="container mb-5" id="seccionscrol">
+        <section class="row justify-content-center">
+            <div class="col-lg-10">
+                <!-- Acordeón de Misión y Visión -->
+                <div class="accordion accordion-flush d-flex flex-column gap-3" id="accordionNosotros">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingNosotros">
+                            <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNosotros" aria-expanded="true" aria-controls="collapseNosotros">
+                                <i class="bi bi-heart-fill icon-sweet text-warning me-3 fs-4"></i> ¿Quiénes Somos?
+                            </button>
+                        </h2>
+                        <div id="collapseNosotros" class="accordion-collapse collapse show" aria-labelledby="headingNosotros" data-bs-parent="#accordionNosotros">
+                            <div class="accordion-body text-secondary lh-lg fs-6 p-4">
+                                <p>En <strong>Labocer</strong> vivimos por las golosinas. Nos encargamos de buscar las mejores del mundo para llevarlas a todos los rincones del Perú, dado que son un pedacito de alegría que siempre saca una sonrisa a quien las pruebe.</p>
+                                <p class="mb-0">Somos una compañía Peruana fundada en 1981, formada por profesionales expertos con más de 35 años de experiencia en la importación y distribución nacional. Nos especializamos en desarrollar líneas exclusivas de golosinas, confites y chocolates internacionales reconociendo la constante innovación del mercado.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingMision">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMision" aria-expanded="false" aria-controls="collapseMision">
+                                <i class="bi bi-rocket-takeoff-fill icon-sweet text-warning me-3 fs-4"></i> Nuestra Misión
+                            </button>
+                        </h2>
+                        <div id="collapseMision" class="accordion-collapse collapse" aria-labelledby="headingMision" data-bs-parent="#accordionNosotros">
+                            <div class="accordion-body text-secondary lh-lg fs-6 p-4">
+                                Somos una empresa líder en la importación, comercialización y distribución de golosinas en el mercado peruano; donde además de productos de consumo masivo, brindamos a nuestros consumidores, socios y empleados, productos de máxima calidad; generando valor y satisfacción constante.
+                                <br><br>
+                                Buscamos ser siempre la primera opción del consumidor al momento de disfrutar marcas internacionales reconocidas, manteniendo una organización responsable y comprometida.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingVision">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVision" aria-expanded="false" aria-controls="collapseVision">
+                                <i class="bi bi-stars icon-sweet text-warning me-3 fs-4"></i> Nuestra Visión
+                            </button>
+                        </h2>
+                        <div id="collapseVision" class="accordion-collapse collapse" aria-labelledby="headingVision" data-bs-parent="#accordionNosotros">
+                            <div class="accordion-body text-secondary lh-lg fs-6 p-4">
+                                Ser la compañía líder en el mercado nacional en el negocio de alimentos y confitería, comprometida en innovar continuamente nuestro portafolio de productos y potenciar las relaciones con clientes, colaboradores y proveedores.
+                                <br><br>
+                                Fomentamos una conciencia empresarial sostenible basada en honradez, integridad, respeto y crecimiento personal a largo plazo.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingValores">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseValores" aria-expanded="false" aria-controls="collapseValores">
+                                <i class="bi bi-gem icon-sweet text-warning me-3 fs-4"></i> Nuestros Valores
+                            </button>
+                        </h2>
+                        <div id="collapseValores" class="accordion-collapse collapse" aria-labelledby="headingValores" data-bs-parent="#accordionNosotros">
+                            <div class="accordion-body text-secondary lh-lg fs-6 p-4">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="badge-valor"><strong>• LEALTAD:</strong> Compromiso y camisetas bien puestas.</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="badge-valor"><strong>• HONESTIDAD:</strong> Transparencia y franqueza en cada proceso.</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="badge-valor"><strong>• RESPETO:</strong> Igualdad de oportunidades y valoración humana.</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="badge-valor"><strong>• CALIDAD INTEGRAL:</strong> Excelencia constante en nuestros dulces.</div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="badge-valor"><strong>• INNOVACIÓN:</strong> Búsqueda activa de las últimas novedades globales.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer reutilizable -->
+    <div th:replace="~{fragments/layout :: footer}"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
